@@ -3,6 +3,7 @@ const states = {
   SHUFFLE:"shuffle",
   BUBBLESORT:"bubblesort",
   SELECTIONSORT:"selectionsort",
+  INSERTIONSORT:"insertionsort",
 };
 
 let visual;
@@ -38,6 +39,10 @@ function draw() {
       break;
     case states.SELECTIONSORT:
       visual.selectionSort();
+      break;
+    case states.INSERTIONSORT:
+      visual.insertionSort();
+      break;
   }
 }
 

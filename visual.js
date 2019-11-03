@@ -7,6 +7,7 @@ class Visual {
     this.lines = [];
     this.checking = [];
     this.min = undefined;
+    this.insertion = undefined;
     this.done = false;
     this.x = 0;
     this.y = 0;
@@ -67,6 +68,11 @@ class Visual {
         this.y = 1;
         this.min = 0;
         break;
+      case "insertionsort":
+        this.x = 1;
+        this.y = 0;
+        this.insertion = this.lines[1];
+        break;
     }
   }
 
@@ -114,6 +120,25 @@ class Visual {
         this.y = this.x + 1;
       }
     } else this.setState("static");
+  }
+
+  insertionSort(){
+    if(this.x < this.lines.length){
+      if(this.y >= 0 && this.lines[this.y].h > this.insertion.h){
+        this.checking = [this.y,this.y+1,this.x];
+        this.lines[this.y+1] = this.lines[this.y];
+        this.lines[this.y+1].goX = this.lines[this.y+1].w * 2 * (this.y+1);
+        this.y--;
+      }else{
+        this.checking = [this.x,this.y+1];
+        this.lines[this.y+1] = this.insertion;
+        this.lines[this.y+1].goX = this.lines[this.y+1].w * 2 * (this.y+1);
+        this.x++;
+        this.insertion = this.lines[this.x];
+        this.y = this.x - 1;
+      }
+    }else this.setState("static");
+
   }
 
 }
