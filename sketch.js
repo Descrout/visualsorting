@@ -18,7 +18,6 @@ function setup() {
 
   visual = new Visual(5);
   visual.setState(states.STATIC);
-  alert("qweqwe");
 }
 
 function windowResized() {
